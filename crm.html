@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM — INSTANT SIGNATURE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A271D'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23CFAE7B' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
+</head>
+<body data-space="crm" data-page="crm">
+
+<main class="crm-shell">
+  <div class="container">
+    <div class="crm-top">
+      <div>
+        <span class="space-tag"><i></i>Espace CRM · données fictives</span>
+        <h1>Gestion commerciale</h1>
+        <p class="muted" style="margin:6px 0 0">Les demandes du configurateur et du formulaire de contact arrivent ici automatiquement. Les modifications sont conservées dans ce navigateur.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button data-tab="dashboard" class="active">Tableau de bord</button>
+        <button data-tab="contacts">Contacts</button>
+        <button data-tab="pipeline">Pipeline</button>
+      </div>
+    </div>
+
+    <!-- Tableau de bord -->
+    <section class="tab-panel active" id="tab-dashboard">
+      <div class="kpis" id="kpis"></div>
+      <div class="dash-grid">
+        <div class="card"><h3>Répartition des événements</h3><p class="muted small">Tous contacts confondus</p><div class="hbar" id="chart-events"></div></div>
+        <div class="card"><h3>Pipeline commercial</h3><p class="muted small">Nombre de contacts par statut</p><div class="hbar" id="chart-pipeline"></div></div>
+        <div class="card"><h3>Sources d'acquisition</h3><p class="muted small">D'où viennent nos contacts</p><div class="hbar" id="chart-sources"></div></div>
+        <div class="card"><h3>Prochaines actions</h3><p class="muted small">Triées par échéance · cliquez pour ouvrir la fiche</p><ul class="agenda" id="agenda"></ul></div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="tab-panel" id="tab-contacts">
+      <div class="toolbar">
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Rechercher un nom, une ville, un e-mail…" aria-label="Rechercher"></label>
+        <select id="f-type" aria-label="Filtrer par événement"><option value="">Tous les événements</option></select>
+        <select id="f-statut" aria-label="Filtrer par statut"><option value="">Tous les statuts</option></select>
+        <select id="f-source" aria-label="Filtrer par source"><option value="">Toutes les sources</option></select>
+        <button class="btn sm" id="btn-new">+ Nouveau contact</button>
+      </div>
+      <p class="small muted" id="count"></p>
+      <div class="table-wrap">
+        <table class="contacts-table">
+          <thead><tr><th>Contact</th><th>Événement</th><th>Date</th><th class="num">Invités</th><th class="num">Budget</th><th>Formule</th><th>Source</th><th>Statut</th><th>Prochaine action</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="btn-row" style="margin-top:18px;justify-content:space-between">
+        <button class="btn ghost sm" id="btn-export">Exporter en CSV</button>
+        <button class="btn ghost sm" id="btn-reset">Réinitialiser les données de démo</button>
+      </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section class="tab-panel" id="tab-pipeline">
+      <p class="muted small">Glissez-déposez une carte pour changer son statut (ou utilisez le menu sur la carte, pratique sur mobile).</p>
+      <div class="kanban" id="kanban"></div>
+    </section>
+  </div>
+</main>
+
+<!-- Fiche contact -->
+<div class="modal-bg" id="modal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal-head">
+      <div>
+        <span class="small muted" id="m-ref"></span>
+        <h2 id="m-title"></h2>
+        <div id="m-status-pill" style="margin-top:8px"></div>
+      </div>
+      <button class="modal-close" id="m-close" aria-label="Fermer">×</button>
+    </div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/crm.js"></script>
+</body>
+</html>

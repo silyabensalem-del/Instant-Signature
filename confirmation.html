@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demande confirmée — INSTANT SIGNATURE</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A271D'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23CFAE7B' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
+</head>
+<body data-space="commercial" data-page="configurateur">
+
+<section class="section">
+  <div class="narrow" id="confirm"></div>
+</section>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/store.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get("id");
+  const c = id && Store.get(id);
+  const box = document.getElementById("confirm");
+  if (!c) {
+    box.innerHTML = `<div class="center"><h1>Aucune demande trouvée</h1><p class="lead">Cette confirmation n'existe pas ou a été réinitialisée.</p><a class="btn gold" href="configurateur.html">Lancer le configurateur</a></div>`;
+  } else {
+    const wedding = c.type === "Mariage";
+    box.innerHTML = `
+      <div class="center">
+        <div class="confirm-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l4 4 10-10"/></svg></div>
+        <span class="eyebrow">Demande confirmée</span>
+        <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)">Merci ${esc(c.prenom)}, <em class="gold">c'est noté !</em></h1>
+        <p class="lead">${wedding ? "Votre demande de devis mariage personnalisé" : "Votre demande d'événement sur mesure"} est bien enregistrée. Nous vous recontactons sous 24 h pour fixer votre appel découverte offert.</p>
+        <p class="muted small">Numéro de référence</p>
+        <p class="ref">${esc(c.ref || c.id)}</p>
+      </div>
+      <div class="card" style="margin-top:34px">
+        <h3>Récapitulatif de votre demande</h3>
+        <dl class="info-list" style="grid-template-columns:170px 1fr">
+          <dt>Événement</dt><dd>${esc(c.type)}</dd>
+          <dt>Date souhaitée</dt><dd>${fmtDate(c.date)}</dd>
+          <dt>Lieu</dt><dd>${esc(c.ville)}${c.lieu ? " · " + esc(c.lieu) : ""}</dd>
+          <dt>Invités</dt><dd>${c.invites}</dd>
+          <dt>Budget maximum</dt><dd>${fmtEUR(c.budget)}</dd>
+          <dt>Ambiance</dt><dd>${esc(c.ambiance)}</dd>
+          <dt>${wedding ? "Accompagnement" : "Formule"}</dt><dd>${esc(c.accompagnement || c.formule)}</dd>
+          <dt>Options</dt><dd>${c.options && c.options.length ? esc(c.options.join(", ")) : "Aucune"}</dd>
+          ${c.estimation ? `<dt>${wedding ? "Honoraires indicatifs" : "Estimation indicative"}</dt><dd>${fmtEUR(c.estimation.low)} – ${fmtEUR(c.estimation.high)}</dd>` : ""}
+          <dt>Contact</dt><dd>${esc(c.email)}${c.tel ? " · " + esc(c.tel) : ""}</dd>
+        </dl>
+      </div>
+      <div class="card beige" style="margin-top:20px">
+        <h3>Et maintenant ?</h3>
+        <div class="steps-h" style="grid-template-columns:repeat(3,1fr)">
+          <div class="s"><b>24 h</b><h4>Appel découverte</h4><p>Nous affinons vos envies et votre budget.</p></div>
+          <div class="s"><b>72 h</b><h4>Proposition</h4><p>Moodboard et devis détaillé${wedding ? " mariage" : ""}.</p></div>
+          <div class="s"><b>Validation</b><h4>On s'occupe de tout</h4><p>Vous profitez, nous orchestrons.</p></div>
+        </div>
+      </div>
+      <div class="notice" style="margin-top:20px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <div><strong>Démonstration — projet étudiant INSEEC.</strong> Aucun paiement n'a été demandé ni effectué, aucun e-mail n'a été envoyé. Votre demande vient d'être ajoutée automatiquement au CRM comme <strong>nouveau prospect</strong>.</div></div>
+      <div class="btn-row" style="justify-content:center;margin-top:30px">
+        <a class="btn gold" href="crm.html?open=${encodeURIComponent(c.id)}">Voir la fiche dans le CRM</a>
+        <a class="btn ghost" href="index.html">Retour à l'accueil</a>
+      </div>`;
+  }
+</script>
+</body>
+</html>

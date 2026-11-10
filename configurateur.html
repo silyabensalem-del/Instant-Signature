@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur — INSTANT SIGNATURE</title>
+  <meta name="description" content="Composez votre événement en 5 étapes et obtenez une estimation indicative immédiate. Démonstration sans paiement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A271D'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23CFAE7B' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
+</head>
+<body data-space="commercial" data-page="configurateur">
+
+<section class="page-hero" style="padding-bottom:30px">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Accueil</a> / Configurateur</div>
+    <span class="eyebrow">Configurateur</span>
+    <h1 id="cfg-title">Composez <em class="gold">votre événement.</em></h1>
+    <p class="lead" id="cfg-lead">Cinq étapes, trois minutes : nous préparons une proposition à votre image, dans votre budget. Estimation indicative, sans engagement ni paiement.</p>
+  </div>
+</section>
+
+<section class="section tight" style="padding-top:10px">
+  <div class="container config-wrap">
+    <div>
+      <div class="progress" id="progress"></div>
+      <form id="cfg" novalidate>
+
+        <!-- Étape 1 -->
+        <div class="cstep" data-step="0">
+          <h2 style="font-size:2rem">Quel événement préparez-vous ?</h2>
+          <p class="muted">Les mariages suivent un parcours spécifique avec devis personnalisé.</p>
+          <div class="opt-grid" id="opt-type"></div>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="cstep" data-step="1">
+          <h2 style="font-size:2rem">Quand, où et avec combien d'invités ?</h2>
+          <div class="form" style="margin-top:20px">
+            <div class="form-row">
+              <div class="field"><label for="f-date">Date souhaitée *</label><input type="date" id="f-date"><span class="err">Merci de choisir une date future.</span></div>
+              <div class="field"><label for="f-ville">Ville ou lieu *</label><input id="f-ville" list="villes" placeholder="Ex. Lyon 6e, Écully…"><datalist id="villes"><option>Lyon</option><option>Villeurbanne</option><option>Caluire-et-Cuire</option><option>Écully</option><option>Vénissieux</option><option>Bron</option><option>Sainte-Foy-lès-Lyon</option><option>Tassin-la-Demi-Lune</option><option>Oullins</option><option>Limonest</option></datalist><span class="err">Merci d'indiquer une ville.</span></div>
+            </div>
+            <div class="field">
+              <label>Avez-vous déjà un lieu ?</label>
+              <div class="opt-grid" id="opt-lieu" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))"></div>
+            </div>
+            <div class="field range-wrap">
+              <label for="f-invites">Nombre d'invités</label>
+              <div class="range-val"><span id="v-invites">30</span> <small style="font-size:1rem" class="muted">invités</small></div>
+              <input type="range" id="f-invites" min="2" max="250" step="1" value="30">
+              <div class="small muted" style="display:flex;justify-content:space-between"><span>2</span><span>250+</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="cstep" data-step="2">
+          <h2 style="font-size:2rem">Votre budget et l'ambiance rêvée</h2>
+          <div class="field range-wrap" style="margin-top:20px">
+            <label for="f-budget">Budget maximum <span id="budget-hint" class="muted" style="text-transform:none;letter-spacing:0;font-weight:400">(tout compris : accompagnement + prestataires)</span></label>
+            <div class="range-val"><span id="v-budget">2 000 €</span></div>
+            <input type="range" id="f-budget" min="300" max="10000" step="50" value="2000">
+            <div class="small muted" style="display:flex;justify-content:space-between"><span id="b-min">300 €</span><span id="b-max">10 000 €</span></div>
+            <p class="small muted" id="per-guest" style="margin-top:8px"></p>
+          </div>
+          <label class="label" style="margin-top:24px">Ambiance souhaitée *</label>
+          <div class="opt-grid" id="opt-ambiance"></div>
+          <span class="err" id="err-ambiance" style="color:var(--ko);font-size:.8rem;display:none">Merci de choisir une ambiance.</span>
+        </div>
+
+        <!-- Étape 4 -->
+        <div class="cstep" data-step="3">
+          <h2 style="font-size:2rem" id="acc-title">Quel niveau d'accompagnement ?</h2>
+          <p class="muted" id="acc-sub">Nous vous suggérons une formule selon vos invités et votre budget — vous restez libre.</p>
+          <div class="opt-grid" id="opt-formule" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))"></div>
+          <label class="label" style="margin-top:30px">Prestations complémentaires <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:400">(plusieurs choix possibles)</span></label>
+          <div class="opt-grid" id="opt-options"></div>
+        </div>
+
+        <!-- Étape 5 -->
+        <div class="cstep" data-step="4">
+          <h2 style="font-size:2rem">Vos coordonnées</h2>
+          <p class="muted">Pour vous envoyer la confirmation et préparer l'appel découverte.</p>
+          <div class="form" style="margin-top:16px">
+            <div class="form-row">
+              <div class="field"><label for="f-prenom">Prénom *</label><input id="f-prenom" autocomplete="given-name"><span class="err">Champ requis.</span></div>
+              <div class="field"><label for="f-nom">Nom *</label><input id="f-nom" autocomplete="family-name"><span class="err">Champ requis.</span></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="f-email">E-mail *</label><input id="f-email" type="email" autocomplete="email"><span class="err">Adresse e-mail invalide.</span></div>
+              <div class="field"><label for="f-tel">Téléphone</label><input id="f-tel" type="tel" autocomplete="tel"></div>
+            </div>
+            <div class="field"><label for="f-source">Comment nous avez-vous connus ?</label>
+              <select id="f-source"><option>Instagram</option><option>TikTok</option><option>Google</option><option>Bouche-à-oreille</option><option>Partenaire</option><option>LinkedIn</option><option>Salon du mariage</option><option>Autre</option></select></div>
+            <div class="field"><label for="f-msg">Un mot sur votre projet</label><textarea id="f-msg" placeholder="Vos idées, vos contraintes, un lien Pinterest…"></textarea></div>
+            <label class="check"><input type="checkbox" id="f-rgpd"> <span>J'accepte d'être recontacté·e au sujet de ma demande. <em>Démo : aucune donnée n'est envoyée, elle reste dans ce navigateur.</em></span></label>
+            <span class="err" id="err-rgpd" style="color:var(--ko);font-size:.8rem;display:none">Merci de cocher cette case.</span>
+          </div>
+        </div>
+
+        <div class="config-nav">
+          <button type="button" class="btn ghost" id="prev">← Retour</button>
+          <button type="button" class="btn" id="next">Continuer →</button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="card recap" aria-live="polite">
+      <span class="eyebrow" style="margin-bottom:8px">Récapitulatif</span>
+      <h3 id="r-title">Votre événement</h3>
+      <dl id="r-list"></dl>
+      <div class="estimate">
+        <span class="label" id="r-est-label">Estimation indicative</span>
+        <div class="big" id="r-est">—</div>
+        <div class="small muted" id="r-est-detail"></div>
+        <div class="gauge"><i id="r-gauge" style="width:0"></i></div>
+        <div class="small" id="r-gauge-txt"></div>
+      </div>
+      <p class="small muted" style="margin:14px 0 0">Estimation non contractuelle, affinée lors de l'appel découverte. Aucun paiement : projet étudiant INSEEC.</p>
+    </aside>
+  </div>
+</section>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/configurateur.js"></script>
+</body>
+</html>
