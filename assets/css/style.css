@@ -661,3 +661,116 @@ p, .lead { text-wrap: pretty; }
   .marquee-track { font-size: 1.15rem; gap: 20px; }
   .split > .figure:not(.wide), .stack-img > .figure:first-child { outline-offset: 6px; }
 }
+
+/* =========================================================
+   Typographie éditoriale & bandeaux raffinés
+   Bodoni Moda (titres) · Cormorant italique (accents) · Jost (texte)
+   ========================================================= */
+:root {
+  --serif: "Bodoni Moda", "Didot", "Times New Roman", serif;
+  --italic: "Cormorant Garamond", "Times New Roman", serif;
+  --sans: "Jost", "Futura", system-ui, sans-serif;
+}
+body { font-weight: 400; letter-spacing: .005em; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; letter-spacing: -.02em; font-optical-sizing: auto; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4.4rem); line-height: 1.04; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); line-height: 1.1; }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+/* Les mots en italique deviennent la « signature » typographique du site */
+h1 em, h2 em, h3 em, em.gold, span.gold, .footer-motto em, .marquee-track, .testi blockquote, blockquote {
+  font-family: var(--italic); font-style: italic; font-weight: 500; letter-spacing: 0;
+}
+h1 em, h2 em { font-size: 1.12em; line-height: .9; }
+.lead { font-weight: 300; font-size: 1.15rem; line-height: 1.7; }
+.eyebrow { font-family: var(--sans); font-weight: 500; font-size: .7rem; letter-spacing: .32em; }
+.eyebrow::before, .center .eyebrow::after { width: 36px; height: 1px; background: linear-gradient(90deg, transparent, currentColor); }
+.center .eyebrow::after { background: linear-gradient(90deg, currentColor, transparent); }
+.btn { font-family: var(--sans); font-weight: 500; letter-spacing: .16em; font-size: .78rem; padding: 15px 28px; }
+.btn.sm { font-size: .7rem; padding: 10px 18px; }
+.price-card .amount, .kpi .v, .range-val, .big, .ref, .step-num, .doc-num, .steps-h .s b, .hero-meta b { font-family: var(--serif); font-weight: 400; }
+.price-card .name, .opt .t, .feature h4, .faq-item summary, .testi blockquote { font-family: var(--italic); font-weight: 500; }
+.price-card .name { font-size: 2.4rem; }
+.faq-item summary { font-size: 1.45rem; }
+
+/* ---------- Bandeau démo : fin, centré, raffiné ---------- */
+.demo-bar { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; background: #2E1F17; }
+.demo-bar .container { min-height: 36px; }
+.demo-flag b { font-weight: 500; color: var(--beige); }
+.demo-flag .dot { width: 5px; height: 5px; box-shadow: none; transform: rotate(45deg); border-radius: 0; }
+.spaces { gap: 22px; }
+.spaces a { padding: 10px 0; border-radius: 0; opacity: .7; position: relative; background: none !important; color: var(--beige) !important; }
+.spaces a::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: 4px; height: 1px; background: var(--gold-2); transition: .3s; }
+.spaces a:hover::after, .spaces a.active::after { left: 0; right: 0; }
+.spaces a.active { opacity: 1; color: var(--gold-2) !important; }
+
+/* ---------- En-tête : sceau monogramme + navigation couture ---------- */
+.site-header .container { height: 84px; }
+.brand { flex-direction: row; align-items: center; gap: 14px; white-space: nowrap; }
+.seal { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--gold); position: relative; flex: none; color: var(--choco); }
+.seal::before { content: ""; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed rgba(180,138,78,.5); }
+.seal i { font-family: var(--italic); font-style: italic; font-size: 1.35rem; font-weight: 500; line-height: 1; transform: translateY(-1px); }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-name { font-family: var(--serif); font-size: 1.32rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 400; }
+.brand-sub { font-family: var(--italic); font-style: italic; text-transform: none; letter-spacing: .04em; font-size: .88rem; color: var(--gold); margin-top: 5px; }
+.main-nav { gap: 30px; }
+.main-nav a { white-space: nowrap; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; color: var(--choco-2); }
+.main-nav a.active { font-weight: 500; color: var(--choco); }
+.main-nav .btn { background: transparent; color: var(--choco); border-color: var(--choco); }
+.main-nav .btn:hover { background: var(--choco); color: var(--ivory); }
+
+/* Menu replié plus tôt : jamais de libellé sur deux lignes */
+@media (max-width: 1360px) {
+  .site-header .main-nav { position: absolute; inset: 100% 0 auto 0; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 24px 26px; background: var(--ivory); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); display: none; transform: none; max-height: calc(100vh - 130px); overflow-y: auto; }
+  .site-header .main-nav.open { display: flex; animation: fadeUp .25s ease; }
+  .main-nav a { padding: 16px 4px; border-bottom: 1px solid var(--line); font-size: .8rem; }
+  .main-nav a::after { display: none; }
+  .main-nav .btn { margin-top: 16px; border-bottom: 1px solid var(--choco); }
+  .nav-toggle { display: block; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+}
+
+/* ---------- Hero : statistiques séparées par des filets ---------- */
+.hero .eyebrow { color: #E8C994; }
+.hero-meta { gap: 0; }
+.hero-meta > div { padding: 0 34px; border-left: 1px solid rgba(255,255,255,.22); }
+.hero-meta > div:first-child { padding-left: 0; border-left: 0; }
+.hero-meta b { font-size: 2rem; }
+
+/* ---------- Bandeaux de page : trait de plume + filet ---------- */
+.page-hero h1 .sig, .space-hero h1 .sig { position: relative; display: inline-block; white-space: nowrap; padding-bottom: .06em; }
+.page-hero:not(.with-img) .sig-line, .space-hero .sig-line { stroke: var(--gold); }
+.page-hero:not(.with-img) { border-bottom: 1px solid var(--line); }
+.breadcrumb { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; }
+.space-tag { font-size: .64rem; letter-spacing: .24em; background: transparent; border-color: var(--gold-2); }
+
+/* ---------- Bandeau défilant : double filet doré ---------- */
+.marquee { padding: 20px 0; border-top: 0; box-shadow: inset 0 1px 0 rgba(207,174,123,.35), inset 0 -1px 0 rgba(207,174,123,.35), inset 0 5px 0 #3A271D, inset 0 6px 0 rgba(207,174,123,.18); }
+.marquee-track { font-size: 1.6rem; }
+
+@media (max-width: 640px) {
+  .brand { gap: 10px; }
+  .seal { width: 38px; height: 38px; }
+  .seal i { font-size: 1.1rem; }
+  .brand-name { font-size: .98rem; letter-spacing: .14em; }
+  .brand-sub { font-size: .76rem; }
+  .demo-bar { letter-spacing: .1em; }
+  .spaces { gap: 14px; }
+  .hero-meta > div { padding: 0 16px; }
+  .hero-meta > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .marquee-track { font-size: 1.25rem; }
+  h1 em, h2 em { font-size: 1.08em; }
+}
+.site-header .container, .demo-bar .container { width: min(1400px, 100% - 48px); }
+.main-nav { gap: 24px; }
+.main-nav a { letter-spacing: .13em; font-size: .7rem; }
+.main-nav .btn { padding: 12px 18px; letter-spacing: .13em; font-size: .68rem; }
+@media (max-width: 1360px) { .site-header .container, .demo-bar .container { width: min(var(--max), 100% - 32px); } }
+@media (max-width: 640px) {
+  .demo-bar { font-size: .56rem; letter-spacing: .06em; }
+  .demo-bar .container { gap: 2px; padding: 6px 0 2px; }
+  .demo-flag { white-space: nowrap; }
+  .spaces { gap: 14px; flex-wrap: nowrap; }
+  .spaces a { padding: 6px 0; white-space: nowrap; }
+}

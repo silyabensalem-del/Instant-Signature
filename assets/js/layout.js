@@ -34,8 +34,11 @@
     <header class="site-header">
       <div class="container">
         <a class="brand" href="index.html" aria-label="Accueil INSTANT SIGNATURE">
-          <span class="brand-name">INSTANT <span>·</span> SIGNATURE</span>
-          <span class="brand-sub">Événements privés · Lyon</span>
+          <span class="seal" aria-hidden="true"><i>IS</i></span>
+          <span class="brand-text">
+            <span class="brand-name">Instant Signature</span>
+            <span class="brand-sub">Maison d'événements privés · Lyon</span>
+          </span>
         </a>
         <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
           ${nav.map(n => `<a href="${n.href}" class="${n.id === page ? "active" : ""}">${n.label}</a>`).join("")}
@@ -52,7 +55,7 @@
         <div class="footer-grid">
           <div>
             <span class="brand-name">INSTANT <span class="gold">·</span> SIGNATURE</span>
-            <p style="margin-top:16px;max-width:340px;opacity:.85">Agence d'événements privés sur mesure à Lyon et dans sa région.</p>
+            <p style="margin-top:16px;max-width:340px;opacity:.85">Agence d'événements privés sur mesure à Lyon et ses alentours.</p>
             <span class="student-note">◆ Projet étudiant INSEEC, démo sans vente réelle</span>
           </div>
           <div>
@@ -91,6 +94,13 @@
 
   document.body.insertAdjacentHTML("afterbegin", demoBar + header);
   document.body.insertAdjacentHTML("beforeend", footer);
+
+  // Trait de plume sous le mot en italique des titres de page (même signature que l'accueil)
+  document.querySelectorAll(".page-hero h1 em, .space-hero h1 em").forEach(em => {
+    if (em.textContent.trim().length > 26 || em.querySelector(".sig-line")) return;
+    em.classList.add("sig");
+    em.insertAdjacentHTML("beforeend", '<svg class="sig-line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 4, 120 22, 180 12 S 270 4, 296 13"/></svg>');
+  });
 
   // Menu mobile
   const toggle = document.querySelector(".nav-toggle");
