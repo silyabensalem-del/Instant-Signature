@@ -11,7 +11,7 @@
     { id: "gagne", label: "Gagné" },
     { id: "perdu", label: "Perdu" },
   ];
-  const EVENTS = ["Mariage", "Anniversaire", "Demande en mariage", "Baby shower", "Gender reveal", "EVJF", "Événement privé"];
+  const EVENTS = ["Mariage", "Anniversaire", "Demande en mariage", "Baby shower", "Gender reveal", "EVJF / EVG", "Événement privé"];
   const FORMULES = ["Essentielle", "Signature", "Prestige", "Devis mariage", "À définir"];
   const SOURCES = ["Instagram", "TikTok", "Site web – configurateur", "Site web – contact", "Bouche-à-oreille", "Partenaire", "Google", "Salon du mariage", "LinkedIn"];
 
@@ -91,7 +91,7 @@
       const slug = (prenom + "." + nom).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z.]/g, "");
       return {
         id: "c" + String(i + 1).padStart(3, "0"),
-        prenom, nom, ville, type, date, invites, budget, formule, source, statut, montant, ambiance,
+        prenom, nom, ville, type: type === "EVJF" ? "EVJF / EVG" : type, date, invites, budget, formule, source, statut, montant, ambiance,
         email: slug + "@example.com",
         tel: "06 39 98 " + String(10 + i * 3).padStart(2, "0") + " " + String(20 + i * 2).padStart(2, "0"),
         historique: hist.map(([d, canal, note]) => ({ date: d, canal, note })),
@@ -107,7 +107,11 @@
   function load() {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) return JSON.parse(raw);
+      if (raw) {
+        const data = JSON.parse(raw);
+        data.contacts.forEach(c => { if (c.type === "EVJF") c.type = "EVJF / EVG"; });
+        return data;
+      }
     } catch (e) { /* stockage indisponible : on repart du jeu de démo */ }
     const data = { contacts: seed(), version: 1 };
     save(data);

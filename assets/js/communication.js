@@ -13,7 +13,7 @@
 
 Nous sommes une nouvelle agence d'événements privés à Lyon. Notre conviction : un bel événement ne doit pas être réservé aux gros budgets.
 
-Mariage, 40 ans, demande en mariage, baby shower, EVJF ou dîner entre amis : vous choisissez l'ambiance, le niveau d'accompagnement et les prestations dont vous avez vraiment besoin. Nous construisons le reste, dans votre budget.
+Mariage, 40 ans, demande en mariage, baby shower, EVJF/EVG ou dîner entre amis : vous choisissez l'ambiance, le niveau d'accompagnement et les prestations dont vous avez vraiment besoin. Nous construisons le reste, dans votre budget.
 
 👉 Swipez pour découvrir nos univers
 👉 Formules dès 390 € (mariages sur devis)
@@ -25,7 +25,7 @@ Chaque moment mérite sa signature.
     },
     {
       net: "TikTok", date: "2026-11-17", format: "Vidéo verticale 30 s (accéléré)", theme: "Coulisses : installation express",
-      img: "1478146896981-b80fe463b330", overlay: "Une table d'anniversaire en 60 secondes",
+      img: "1545696563-af8f6ec2295a", overlay: "Une table d'anniversaire en 60 secondes",
       visuel: "Plan fixe en plongée, accéléré x8 : table nue → nappe en lin → vaisselle → fleurs → bougies allumées. Texte à l'écran : « 2 h d'installation… en 30 secondes ». Son tendance doux.",
       objectif: "Notoriété — portée organique et viralité locale",
       text: `POV : tu as 2 heures pour transformer une table vide en table d'anniversaire chic pour 30 invités 🕯️
@@ -57,7 +57,7 @@ Je cherche maintenant à rencontrer des fleuristes, photographes, traiteurs, pâ
     },
     {
       net: "Instagram", date: "2026-11-20", format: "Réel 20 s (avant / après)", theme: "Transformation baby shower",
-      img: "1487530811176-3780de880c2d", overlay: "Avant / après : un salon devenu baby shower",
+      img: "1768776183122-95c7d3adbf3e", overlay: "Avant / après : un salon devenu baby shower",
       visuel: "Transition au claquement de doigts : salon vide → arche de ballons sauge et ivoire, sweet table, fleurs séchées. Texte : « Formule Essentielle · 18 invitées ».",
       objectif: "Engagement — démontrer la formule Essentielle",
       text: `Avant ➝ après 🤍
@@ -136,7 +136,7 @@ Le détail dans le document ci-dessous. Intéressé·e ? Commentez « réseau »
     },
     {
       net: "TikTok", date: "2026-12-08", format: "Vidéo tutoriel 35 s", theme: "Gender reveal écoresponsable",
-      img: "1530103862676-de8c9debad1d", overlay: "3 idées de gender reveal sans fumigène",
+      img: "1788462810835-51fffad94026", overlay: "3 idées de gender reveal sans fumigène",
       visuel: "Trois mini-séquences : gâteau coupé (intérieur coloré), box qui s'ouvre et libère des ballons réutilisables, lettres lumineuses qui s'allument. Texte récapitulatif final.",
       objectif: "Engagement — positionner la marque sur l'écoresponsabilité",
       text: `3 idées de gender reveal SANS fumigène (ta planète et tes voisins te remercient 🌍)
@@ -183,7 +183,7 @@ Merci à toutes celles et ceux qui ont partagé, commenté et recommandé. 🙏
     ["2026-12-05", "Instagram", "Stories", "Questions / réponses budget", "Considération"],
     ["2026-12-07", "Instagram", "Publication classique", "Avis client (premier avis Google)", "Preuve sociale"],
     ["2026-12-11", "Instagram", "Réel 25 s", "Table de Noël en famille, formule Essentielle", "Conversion fêtes"],
-    ["2026-12-12", "TikTok", "Vidéo 30 s", "3 erreurs de déco pour un EVJF", "Engagement"],
+    ["2026-12-12", "TikTok", "Vidéo 30 s", "3 erreurs de déco pour un EVJF/EVG", "Engagement"],
   ];
 
   // ---------- publications ----------
@@ -232,7 +232,7 @@ Merci à toutes celles et ceux qui ont partagé, commenté et recommandé. 🙏
 
   // ---------- partenariats ----------
   const PARTNERS = [
-    { type: "Fleuriste", profil: "Artisan fleuriste lyonnais travaillant les fleurs de saison et locales", img: "1490750967868-88aa4486c946",
+    { type: "Fleuriste", profil: "Artisan fleuriste lyonnais travaillant les fleurs de saison et locales", img: "1487530811176-3780de880c2d",
       interet: "La décoration florale est présente dans presque tous nos événements ; un fleuriste partenaire garantit la qualité et un prix maîtrisé.",
       apporte: "Compositions sur mesure, conseils de saison, tarifs négociés, livraison et installation coordonnées.",
       recoit: "Un volume régulier de commandes qualifiées, des briefs clairs, des photos professionnelles de ses créations et la mention sur nos réseaux.",

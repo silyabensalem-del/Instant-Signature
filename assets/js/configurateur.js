@@ -6,7 +6,7 @@
     { id: "demande", label: "Demande en mariage", d: "Moment romantique", crm: "Demande en mariage" },
     { id: "baby", label: "Baby shower", d: "Célébrer bébé", crm: "Baby shower" },
     { id: "gender", label: "Gender reveal", d: "Révélation personnalisée", crm: "Gender reveal" },
-    { id: "evjf", label: "EVJF", d: "Entre amies", crm: "EVJF" },
+    { id: "evjf", label: "EVJF / EVG", d: "Entre amies ou entre amis", crm: "EVJF / EVG" },
     { id: "prive", label: "Événement privé", d: "Dîner, soirée, fête de famille", crm: "Événement privé" },
   ];
   const LIEUX = [
