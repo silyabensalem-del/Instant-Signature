@@ -590,3 +590,74 @@ tr.highlight td { background: var(--gold-soft); font-weight: 600; }
 .main-nav .btn::after { display: none; }
 .btn:focus { outline: none; }
 .btn:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+
+/* =========================================================
+   Retouches « signature » : détails raffinés et originaux
+   ========================================================= */
+
+/* Grain papier très léger sur le fond ivoire */
+body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .15 0 0 0 0 .11 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+h1, h2, h3 { text-wrap: balance; }
+p, .lead { text-wrap: pretty; }
+
+/* Titre d'accueil : « sa signature. » jamais coupé, souligné d'un trait de plume */
+.hero h1 { max-width: 15ch; }
+.hero h1 .sig { position: relative; display: inline-block; white-space: nowrap; padding-bottom: .08em; }
+.sig-line { position: absolute; left: -2%; bottom: -.14em; width: 104%; height: .32em; fill: none; stroke: #E8C994; stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 420; stroke-dashoffset: 420; animation: drawSig 1.8s .7s cubic-bezier(.6,.1,.2,1) forwards; }
+@keyframes drawSig { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .sig-line { animation: none; stroke-dashoffset: 0; } }
+
+/* Bandeau défilant des univers */
+.marquee { background: var(--choco); color: var(--gold-2); overflow: hidden; padding: 18px 0; border-top: 1px solid rgba(207,174,123,.25); }
+.marquee-track { display: flex; gap: 28px; width: max-content; animation: marquee 38s linear infinite; font-family: var(--serif); font-size: 1.45rem; font-style: italic; white-space: nowrap; align-items: center; }
+.marquee-track i { font-style: normal; font-size: .8rem; color: var(--gold); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* Photos portrait en forme d'arche, avec un fin cadre doré décalé */
+.split > .figure:not(.wide), .stack-img > .figure:first-child {
+  border-radius: 999px 999px var(--radius-lg) var(--radius-lg);
+  outline: 1px solid rgba(180,138,78,.55); outline-offset: 10px;
+}
+.stack-img > .figure:last-child { border-radius: 50%; }
+.stack-img { padding-top: 12px; }
+
+/* Cartes événements : liseré doré qui apparaît au survol */
+.event-card::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(232,201,148,.7); border-radius: calc(var(--radius-lg) - 8px); opacity: 0; transform: scale(.97); transition: .45s ease; z-index: 1; pointer-events: none; }
+.event-card:hover::before { opacity: 1; transform: none; }
+
+/* Témoignages : grand guillemet doré */
+.testi { padding-top: 46px; }
+.testi::before { content: "\201C"; position: absolute; top: -6px; right: 22px; font-family: var(--serif); font-size: 7rem; line-height: 1; color: var(--gold-2); opacity: .45; }
+
+/* En-têtes de pages sans photo : halo doré doux + monogramme en filigrane */
+.page-hero:not(.with-img), .space-hero { position: relative; overflow: hidden; }
+.page-hero:not(.with-img)::before, .space-hero::before {
+  content: "IS"; position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+  font-family: var(--serif); font-style: italic; font-size: clamp(12rem, 26vw, 24rem); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(180,138,78,.22); pointer-events: none;
+}
+.page-hero:not(.with-img)::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 80% at 85% 30%, rgba(207,174,123,.16), transparent 70%); pointer-events: none; }
+.page-hero > .container, .page-hero > .narrow, .space-hero > .container { position: relative; z-index: 1; }
+
+/* Titres d'étape et de section : chiffres en italique doré */
+.doc-num, .step-num, .steps-h .s b { font-style: italic; }
+
+/* Bouton doré : reflet satiné au survol */
+.btn.gold { background-image: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%); background-size: 250% 100%; background-position: 120% 0; transition: background-position .8s ease, transform .25s, box-shadow .25s, background-color .25s; }
+.btn.gold:hover { background-position: -20% 0; }
+
+/* Séparateur ornemental sous les titres centrés */
+.center > h2::after { content: "✦"; display: block; font-size: .8rem; color: var(--gold); margin-top: 14px; letter-spacing: 0; }
+
+/* Pied de page : devise en grand */
+.footer-motto { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.1; color: var(--ivory); margin: 0 0 56px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12); text-wrap: balance; }
+.footer-motto em { color: var(--gold-2); white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .hero h1 { max-width: none; }
+  .marquee-track { font-size: 1.15rem; gap: 20px; }
+  .split > .figure:not(.wide), .stack-img > .figure:first-child { outline-offset: 6px; }
+}

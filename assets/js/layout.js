@@ -48,10 +48,11 @@
   const footer = `
     <footer class="site-footer">
       <div class="container">
+        <p class="footer-motto">Chaque moment mérite <em>sa&nbsp;signature.</em></p>
         <div class="footer-grid">
           <div>
             <span class="brand-name">INSTANT <span class="gold">·</span> SIGNATURE</span>
-            <p style="margin-top:16px;max-width:340px;opacity:.85">Agence d'événements privés sur mesure à Lyon et dans sa région. <em class="gold">Chaque moment mérite sa signature.</em></p>
+            <p style="margin-top:16px;max-width:340px;opacity:.85">Agence d'événements privés sur mesure à Lyon et dans sa région.</p>
             <span class="student-note">◆ Projet étudiant INSEEC, démo sans vente réelle</span>
           </div>
           <div>
