@@ -30,28 +30,19 @@
       </div>
     </div>`;
 
-  // Logo : plume de stylo dans un sceau + « INSTANT » en capitales et « Signature » à la plume
-  const logo = `
-    <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="24" cy="24" r="22.5" class="lm-ring"/>
-      <circle cx="24" cy="24" r="19.5" class="lm-ring2"/>
-      <path class="lm-nib" d="M24 10.5c3.6 4.2 6.6 9.3 6.6 14.6 0 1.4-.3 2.6-.9 3.7L24 38.5l-5.7-9.7a7.7 7.7 0 0 1-.9-3.7c0-5.3 3-10.4 6.6-14.6z"/>
-      <path class="lm-slit" d="M24 26.2v12"/>
-      <circle class="lm-hole" cx="24" cy="24.4" r="1.7"/>
-      <path class="lm-ink" d="M13 40.5c4-1.6 7.5-1.7 11-.4s7.3 1.2 11-.6"/>
-    </svg>
-    <span class="logo-word">
-      <span class="logo-top">Instant</span>
-      <span class="logo-script">Signature<svg class="sig-line" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 60 4, 120 22, 180 12 S 270 4, 296 13"/></svg></span>
-    </span>`;
-
   const header = `
     <header class="site-header">
       <div class="container">
-        <a class="brand" href="index.html" aria-label="Accueil INSTANT SIGNATURE">${logo}</a>
+        <a class="brand" href="index.html" aria-label="Accueil INSTANT SIGNATURE">
+          <span class="seal" aria-hidden="true"><i>IS</i></span>
+          <span class="brand-text">
+            <span class="brand-name">Instant Signature</span>
+            <span class="brand-sub">Maison d'événements privés · Lyon</span>
+          </span>
+        </a>
         <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
           ${nav.map(n => `<a href="${n.href}" class="${n.id === page ? "active" : ""}">${n.label}</a>`).join("")}
-          <a href="configurateur.html" class="btn sm nav-cta">Composer mon événement</a>
+          <a href="configurateur.html" class="btn gold sm">Composer mon événement</a>
         </nav>
         <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
       </div>
@@ -60,10 +51,10 @@
   const footer = `
     <footer class="site-footer">
       <div class="container">
-        <p class="footer-motto"><span class="ht-top">Chaque moment mérite</span> <em>sa&nbsp;signature.</em></p>
+        <p class="footer-motto">Chaque moment mérite <em>sa&nbsp;signature.</em></p>
         <div class="footer-grid">
           <div>
-            <span class="brand brand-footer">${logo}</span>
+            <span class="brand-name">INSTANT <span class="gold">·</span> SIGNATURE</span>
             <p style="margin-top:16px;max-width:340px;opacity:.85">Agence d'événements privés sur mesure à Lyon et ses alentours.</p>
             <span class="student-note">◆ Projet étudiant INSEEC, démo sans vente réelle</span>
           </div>
